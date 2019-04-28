@@ -1,0 +1,124 @@
+<app-nav></app-nav>
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <br/>
+      <label>Saisie d'un User</label>
+    </div>
+
+    <div class="panel-body">
+      <div class="example-container container">
+
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+          <div class="input-section">
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Name utilisateur</mat-label>
+                  <input matInput placeholder="Placeholder" name="name" [(ngModel)]="form.name" #name="ngModel" required>
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Name</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>username</mat-label>
+                  <input matInput placeholder="Placeholder" name="username" [(ngModel)]="form.username" #username="ngModel">
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Username</mat-hint>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>email</mat-label>
+
+                  <input matInput placeholder="Enter your email" [formControl]="email" name="email" [(ngModel)]="form.email" required email>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Email</mat-hint>
+
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+
+                  <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="form.password"
+                    #password="ngModel">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+               
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    
+                  
+                  </button>
+                  <mat-hint>Password</mat-hint>
+
+                </mat-form-field>
+              </div>
+
+            </div>
+
+
+
+
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Role</mat-label>
+
+                  <mat-select placeholder="Role" [(ngModel)]="form.rolename" #role="ngModel" name="rolename">
+                    <mat-option *ngFor="let r of roleList" [value]="r.name">
+                      {{r.name}}
+
+
+
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint>role</mat-hint>
+
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Manager</mat-label>
+
+                  <mat-select placeholder="Manager" name="usernamemanager" [(ngModel)]="form.usernamemanager" #usernamemanager="ngModel">
+                    <mat-option *ngFor="let m of listManager" [value]="m.username">
+                      {{m.username}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint>Manager</mat-hint>
+
+                </mat-form-field>
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+          <div class="buttom-section container">
+            <div class="form-group">
+              <button class="btn btn-primary">Register</button>
+              <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                Signup failed!<br/>{{errorMessage}}
+              </div>
+              <button type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

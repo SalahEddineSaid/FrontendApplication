@@ -1,0 +1,15 @@
+mat-list-item{
+border-bottom: solid 1px;
+
+}
+
+mat-list-item:hover{
+
+    color: white !important;
+    background-color: #4996B8 !important;    
+}
+
+md-list.make-scrollable {
+    height: 60px !important;    
+    overflow-y: scroll!important;    
+}

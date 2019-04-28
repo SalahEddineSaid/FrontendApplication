@@ -1,0 +1,93 @@
+
+<div class="container" style="width: 120%;">
+    <h3 style="margin-left: 20%;">{{messageqst}}</h3>
+  
+    
+      <div class="table-responsive" class="col-9">
+    
+      
+        <div class="container" *ngIf="numberqst != 0" >
+      <form #f="ngForm" (ngSubmit)="updateQuestion(f.value)">
+          <ul class="list-group" style="width: 140%;">
+            <li class="list-group-item" *ngFor="let quest of QuestRepList">
+    
+              <p class="h5" class="text-info"> {{quest.description}}</p>
+              <p class="h5" class="text-info"  >{{quest.question}}</p>
+              <hr >
+               
+    
+                <hr >
+    
+                <div [ngSwitch]=quest.typeQuestion.idtype>
+                    <div *ngSwitchCase="1">
+                        <textarea name="reponse" required [(ngModel)]="quest.reponse"  rows="2" cols="80"></textarea>
+                    </div>
+                    <div *ngSwitchCase="2" >
+                        <mat-form-field>
+                            <mat-select placeholder="3" name="reponse" required [(ngModel)]="quest.reponse">
+                              <mat-option *ngFor="let t of options1" [value]="t">
+                                {{t}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+      
+                    <div *ngSwitchCase="3"> 
+                        <mat-form-field>
+                            <mat-select placeholder="3" name="reponse" required [(ngModel)]="quest.reponse">
+                              <mat-option *ngFor="let t of options2" [value]="t">
+                                {{t}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+      
+                </div>
+           <!--
+                <div [ngSwitch]=quest.typeQuestion.idtype>
+                    <div *ngSwitchCase="1">
+                        <textarea name="reponse" required [(ngModel)]="quest.reponse" rows="2" cols="80"></textarea>
+                    </div>
+            
+
+
+                  <mat-form-field>
+                      <mat-select [placeholder]="question" name="reponse" required [(ngModel)]="quest.reponse">
+                        <mat-option *ngFor="let t of options2" [value]="t">
+                          {{t}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              
+      
+                </div>
+
+              --> 
+    
+            </li>
+    
+          </ul>
+          <div style = "margin-left: 80%">
+              <button [disabled]="!f.valid" type="submit"  class="btn btn-outline-primary">Save</button>
+              
+          </div>
+        
+        </form>
+        </div>
+    
+      </div>
+    </div>
+    <ul style = "margin-left: 80%" >
+        
+        <button  type="button" class="btn btn-link" (click)="showTimeline()">Retour</button>
+      
+      </ul>
+      <p style="visibility:hidden;">The columns will automatically staccccdddssdddddddddddddddddssssssssssssssssssck on top of each other when the screen is less than 768px wide.</p>
+   
+    
+    
+    
+    
+    
+    
+    

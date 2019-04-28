@@ -1,0 +1,98 @@
+
+<app-nav ></app-nav>
+<!--
+<div class="container spacer">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 style="margin-left:40%" class="font-italic">Liste des Users</h3>
+      </div>
+      <br>
+      <div class="panel-body">
+        <button class="btn btn-outline-primary" (click)="onAddUser()">Ajouter un user</button>
+  <br>
+  <br>
+        <table class="table table-striped spacer">
+          <tr>
+            <th>Username</th><th>Email</th><th>Manager</th><th>Actions</th>
+          </tr>
+          <tr *ngFor="let u of userList">
+           
+            <td>{{u.username}}</td>
+            <td>{{u.email}}</td>
+  
+            <td> {{u.usernamemanager}}</td>
+  
+            
+          
+            
+       
+            <td>
+              <a class="btn" class="text-primary" (click)="onEditUser(u.id)">Edit </a>
+              <a class="btn" class="text-danger" (click)="onDeleteUser(u)">Delete</a>
+            </td>
+          </tr>
+        </table>
+  
+      </div>
+      <button style="margin-left:80%" type="submit" routerLink="/admin-groupe" class="btn btn-outline-primary btn-sm">Retour </button>
+  
+    </div>
+  </div>
+ 
+-->
+<div class="panel-heading">
+    <h3 style="margin-left:40%" class="font-italic">Liste des Users</h3>
+  </div>
+
+<button class="btn btn-outline-primary" (click)="onAddUser()">Ajouter un user</button>
+
+
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource"   matSort class="mat-elevation-z8">
+    
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >username </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="usernamemanager" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Manager </th>
+        <td mat-cell *matCellDef="let element"> {{element.usernamemanager}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element"> 
+            
+              <a class="btn" class="text-primary" (click)="onEditUser(element.id)">Edit </a>
+              <a class="btn" class="text-danger" (click)="onDeleteUser(element)">Delete</a>
+          </td>
+        </ng-container>
+    
+      <td>
+         
+        </td>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <button style="margin-left:80%" type="submit" routerLink="/admin-groupe" class="btn btn-outline-primary btn-sm">Retour </button>
+    
+    <app-footer ></app-footer>

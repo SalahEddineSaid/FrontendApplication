@@ -1,0 +1,78 @@
+
+<div class="container" style="width: 120%;">
+    <h3 style="margin-left: 20%;">{{messageqst}}</h3>
+    
+  
+
+  <div class="table-responsive" class="col-9">
+
+  
+    <div class="container" *ngIf="numberqst != 0" >
+  <form #f="ngForm" (ngSubmit)="updateQuestion(f.value)">
+      <ul class="list-group" style="width: 140%;">
+        <h3 style="margin-left: 40%;">Les reponses de {{ nameuser}} </h3>
+        <li class="list-group-item" *ngFor="let quest of QuestRepList">
+
+          <p class="h5" class="text-info"> {{quest.description}}</p>
+          <p class="h5" class="text-info" >{{quest.question}}</p>
+          <hr >
+            <h4 class="h6 text-muted" >Reponse consultant</h4>
+            <p class="h6 "  >{{quest.reponse}}</p>
+            <hr >
+            <p class="h6 text-muted"   >Reponse manager</p>
+            <!--<div>
+                <textarea name="reponseManager" required [(ngModel)]="quest.reponseManager"  rows="2" cols="80"></textarea>
+            </div> -->
+       
+       
+            <div [ngSwitch]=quest.typeQuestion.idtype>
+                <div *ngSwitchCase="1">
+                    <textarea name="reponseManager"  required [(ngModel)]="quest.reponseManager"  rows="2" cols="80"></textarea>
+                </div>
+                <div *ngSwitchCase="2" >
+                    <mat-form-field>
+                        <mat-select placeholder="3" name="reponseManager" required [(ngModel)]="quest.reponseManager">
+                          <mat-option *ngFor="let t of options1" [value]="t">
+                            {{t}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+  
+                <div *ngSwitchCase="3"> 
+                    <mat-form-field>
+                        <mat-select placeholder="3" name="reponseManager" required [(ngModel)]="quest.reponseManager">
+                          <mat-option *ngFor="let t of options2" [value]="t">
+                            {{t}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+  
+            </div>
+
+        </li>
+
+      </ul>
+      <div class="row" style="width: 140%">
+        <div class="col-6" style="text-align: left;display: flex">
+            <button [disabled]="!f.valid" type="submit" class="btn btn-outline-primary">Save</button>
+            
+        </div>
+        <div class="col-6" style="justify-content: flex-end;display: flex">
+            <button  class="btn btn-link" (click)="showTimeline()">Retour</button>
+            
+        </div>
+      </div>
+    
+    </form>
+    </div>
+
+  </div>
+</div>
+  <p style="visibility:hidden;">The columns will automatically staccccdddssdddddddddddddddddssssssssssssssssssck on top of each other when the screen is less than 768px wide.</p>
+  <div *ngIf="numberqst==0"  class="col-12" style="justify-content: flex-end;display: flex">
+      <button  class="btn btn-link" (click)="showTimeline()">Retour</button>
+      
+  </div>
+  

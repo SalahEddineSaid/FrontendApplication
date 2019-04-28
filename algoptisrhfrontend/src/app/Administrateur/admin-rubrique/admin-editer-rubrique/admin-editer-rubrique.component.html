@@ -1,0 +1,36 @@
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 style="margin-left:85%">Editer une Rubrique</h3></div>
+    <br>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="updateRubrique(f.value)">
+
+        <div class="form-group">
+          <label class="control-label">Code:</label>
+          <input class="form-control" type="text" required [(ngModel)]="rubrique.codeRubrique" name="codeRubrique"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Libellé:</label>
+          <input class="form-control" type="text" required [(ngModel)]="rubrique.libelleRubrique" name="libelleRubrique"/>
+        </div>
+
+        <div class="form-group">
+          <h4>Liste des Thematiques :</h4>
+          <mat-form-field>
+            <mat-select [placeholder]="rubrique.thematique.libelleThematique" name="thematique" required [(ngModel)]="rubrique.thematique">
+              <mat-option *ngFor="let t of thematiqueList" [value]="t">
+                {{t.libelleThematique}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save</button>
+        <div class="divider"></div>
+        <button  type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+
+      </form>
+    </div>
+  </div>
+</div>

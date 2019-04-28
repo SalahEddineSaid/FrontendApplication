@@ -1,0 +1,50 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+ 
+a:hover, a:active{
+    color: lightgray;
+}
+ 
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ 
+mat-toolbar{
+    border-radius: 3px;
+}
+ 
+@media(max-width: 959px){
+    mat-toolbar{
+        border-radius: 0px;
+    }
+}
+
+h6, .propertie{
+    color: #FFFFFF !important;
+}
+.propertie-value{
+    color: #88E0F0 !important;   
+}
+
+.btn-outline-primary{
+    color: white !important;
+    border-color: white !important;
+}
+
+.btn-outline-primary:hover{
+    color: #4996B8 !important;
+    background-color: white !important;
+}
+.btn-outline-primary.logout{
+    color: #88E0F0 !important;
+    border-color: #88E0F0 !important;
+}
+
+.btn-outline-primary.logout:hover{
+    color: #4996B8 !important;
+    background-color: #88E0F0 !important;
+}

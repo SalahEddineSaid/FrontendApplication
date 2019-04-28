@@ -1,0 +1,25 @@
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
+
+
+
+.buttom-section {
+  display: flex; 
+  justify-content: flex-end;
+  padding-right:  20% !important;
+
+
+  
+}  
+.buttom-section button{
+
+  margin-left:10px !important 
+
+}
+.col-6{
+  font-size: 15px !important;
+}

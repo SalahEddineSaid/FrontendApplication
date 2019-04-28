@@ -1,0 +1,114 @@
+<!--
+<app-nav (sidenavToggle)="sidenav.toggle()"></app-nav>
+<div class="container spacer">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 style="margin-left:40%" class="font-italic">Liste des Rendez-vous</h3>
+    </div>
+    <br>
+    <div class="panel-body">
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="onAddRdv()">Ajouter rendez-vous</button>
+      <br>
+      <br>
+      <table class="table table-striped spacer">
+        <tr>
+       <th>Date du RDV</th><th>User</th><th>Thematique</th><th>Etat</th><th>Actions</th>
+        </tr>
+        <tr *ngFor="let r of rdvList">
+
+          <td>{{r.datetime}}</td>
+          <td>{{r.user.username}}</td>
+          <td>{{r.thematique.libelleThematique}}</td>
+          
+          <td *ngIf="r.etat==true " >Valider</td>
+          <td *ngIf="r.etat==false " >En cours</td>
+          <td>
+            <a class="btn"  class="text-primary" (click)="onEditRdv(r.idrdv)">Edit </a>  
+
+            <a class="btn" class="text-danger" (click)="onDeleteRdv(r)">Delete</a>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <button style="margin-left:85%" type="submit" routerLink="/admin-groupe" class="btn btn-outline-primary btn-sm" >Retour </button>
+
+  </div>
+</div>
+
+<app-footer ></app-footer>
+-->
+<app-nav (sidenavToggle)="sidenav.toggle()"></app-nav>
+
+<div class="panel-heading">
+    <h3 style="margin-left:40%" class="font-italic">Liste des Rendez-vous</h3>
+  </div>
+  <br/>
+  <button type="button" class="btn btn-outline-primary btn-sm" (click)="onAddRdv()">Ajouter rendez-vous</button>
+  
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+<table mat-table [dataSource]="dataSource"   matSort class="mat-elevation-z8">
+    
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="datetime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Date Rdv </th>
+        <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> User </th>
+        <td mat-cell *matCellDef="let element"> {{element.user.username}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="libelleThematique" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Thematique </th>
+        <td mat-cell *matCellDef="let element"> {{element.thematique.libelleThematique}} </td>
+      </ng-container>
+
+
+
+
+     
+        <ng-container matColumnDef="etat"   >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Etat </th>
+            <td mat-cell *matCellDef="let element"   >
+
+                <mat-chip-list>
+                <mat-chip style="background: green; color: white" *ngIf="element.etat==true">Valider</mat-chip>
+                <mat-chip style="background: orange; color: white" *ngIf="element.etat==false">En cours</mat-chip>
+              </mat-chip-list>
+            </td>
+            
+        
+          </ng-container>
+
+
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element"> 
+            
+              <a class="btn" class="text-primary"  (click)="onEditRdv(element.idrdv) ">Edit </a>
+              <a class="btn" class="text-danger" (click)="onDeleteRdv(element)">Delete</a>
+          </td>
+        </ng-container>
+    
+      <td>
+         
+        </td>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <button style="margin-left:80%" type="submit" routerLink="/admin-groupe" class="btn btn-outline-primary btn-sm">Retour </button>
+    
+    <app-footer ></app-footer>

@@ -1,0 +1,52 @@
+<app-navconsultant></app-navconsultant>
+<h3 style="margin-left: 40%;">{{msgdv}}</h3>
+
+<div class="container container-fluid content-zone">
+    <div class="row example-basic">
+        <div class="row example-centered">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <hr><br><br><br>
+
+              <div  *ngIf="hidden" >
+              <div>
+                     <ul class="timeline timeline-centered">
+                         <li class="timeline-item" *ngFor="let rdv of rdvDate" >
+                             <div class="timeline-info">
+                                 <span>{{rdv.datetime | date: 'EEEE W MMMM yyyy  hh:mm'}}</span>
+                             </div>
+                             <div class="timeline-marker"></div>
+                              <div class="timeline-content">
+                                 <h3 class="timeline-title">
+                                    <button class="btn btn-outline-primary" type="submit" (click)="afficherubrique(rdv.thematique.idthematique,rdv.idrdv)" >{{rdv.thematique.libelleThematique}}</button>
+                                    
+
+                                    <button  type="submit" (click)="print(rdv.idrdv)"  *ngIf="rdv.etat==true||etatrdv==true "class="btn btn-primary">P</button>
+                                    <button  type="submit"   *ngIf="rdv.etat==false" (click)="confirmerrdv(rdv.idrdv,rdv.etat)" class="btn btn-primary">C</button>
+                                    
+
+
+                                </h3>
+                                <ul *ngFor="let rq of rubriqueliste">
+                                    <li *ngIf="rq.thematique.idthematique==rdv.thematique.idthematique"  >
+                                       <app-rubrique-consultant (idEvent)="getIdrubrique($event)" [rubrique]="rq" (msgEvent)="receiveValue($event)"></app-rubrique-consultant>
+           
+                                   </li>
+                                </ul>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+                </div>
+               <div *ngIf="!hidden" style="width: 160%;">
+
+                    <app-question-reponse-consultant [idrdv]="idrdv"  [idrubriquetimeline]="idrubriquetimeline"   (msgEvent)="receiveValue($event)"></app-question-reponse-consultant>
+                </div>
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<app-footerconsultant></app-footerconsultant>

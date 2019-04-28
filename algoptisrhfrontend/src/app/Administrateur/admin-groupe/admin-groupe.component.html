@@ -1,0 +1,60 @@
+
+<app-nav (sidenavToggle)="sidenav.toggle()"></app-nav>
+
+<br/>
+<br/>
+<div class="container spacer">
+  <div class="panel panel-primary vertical-center" >
+
+      <h4 style="margin-left:40%"  >Liste des modules</h4>
+
+
+    <br>
+    <div class="panel-body">
+
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">module</th>
+            <th scope="col">Modification</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <th scope="row">1</th>
+            <td colspan="2"  routerLink="/admin-rdvs">Rendez-vous</td>
+            <td></td>
+
+          </tr>
+          <tr *ngIf="info.authorities==roleuser">
+            <th scope="row">2</th>
+            <td colspan="2" routerLink="/admin-users">Utilisateurs</td>
+            <td></td>
+
+          </tr>
+          <tr *ngIf="info.authorities==roleuser">
+            <th scope="row">3</th>
+            <td colspan="2" routerLink="/admin-thematiques">Thematique</td>
+           <td></td>
+          </tr>
+          <tr *ngIf="info.authorities==roleuser">
+            <th scope="row">4</th>
+            <td colspan="2" routerLink="/admin-rubriques">Rubrique</td>
+           <td></td>
+          </tr>
+          <tr *ngIf="info.authorities==roleuser">
+            <th scope="row">5</th>
+            <td colspan="2" routerLink="/admin-questions" >Question</td>
+           <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<app-footer ></app-footer>

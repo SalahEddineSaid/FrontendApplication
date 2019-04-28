@@ -1,0 +1,101 @@
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Saisie d'un User</h3></div>
+    <br>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+
+        <div class="form-group">
+          <label class="control-label">Username :</label>
+          <input class="form-control" type="text" name="username" required [(ngModel)]="username"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Password :</label>
+          <input class="form-control" type="text" name="password" required [(ngModel)]="password"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">firstName :</label>
+          <input class="form-control" type="text" name="firstName" required ngModel/>
+        </div>
+        <div class="form-group">
+          <label class="control-label">lastName :</label>
+          <input class="form-control" type="text" name="lastName" required ngModel/>
+        </div>
+       
+        <div class="form-group">
+          <label class="control-label">age :</label>
+          <input class="form-control" type="text" name="age" required ngModel/>
+        </div>
+
+
+        <div class="form-group">
+          <label class="control-label">salary :</label>
+          <input class="form-control" type="text" name="salary" required ngModel/>
+        </div>
+
+
+
+      
+    
+
+
+
+
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save</button>
+        <div class="divider"></div>
+        <button  type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--
+
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Add User</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">User Name:</label>
+      <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" formControlName="password" placeholder="password" name="password" class="form-control" id="password">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" formControlName="age" placeholder="age" name="age" class="form-control" id="age">
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" formControlName="salary" placeholder="salary" name="salary" class="form-control" id="salary">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>
+
+-->

@@ -1,0 +1,45 @@
+<app-nav ></app-nav>
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Editer une Question</h3></div>
+    <br>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="updateQuestion(f.value)">
+
+        <div class="form-group">
+          <label class="control-label">Question :</label>
+          <input class="form-control" type="text" name="question" required [(ngModel)]="questionReponse.question"/>
+        </div>
+
+        <div class="form-group">
+          <h4>Liste types des questions :</h4>
+          <mat-form-field>
+            <mat-select [placeholder]="questionReponse.typeQuestion.description"  name="typeQuestion" required [(ngModel)]="questionReponse.typeQuestion">
+              <mat-option *ngFor="let t of typeQuestionList" [value]="t">
+                {{t.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <h4>Liste des Rubriques :</h4>
+          <mat-form-field>
+            <mat-select [placeholder]="questionReponse.rubrique.libelleRubrique"  name="rubrique" required [(ngModel)]="questionReponse.rubrique">
+              <mat-option *ngFor="let r of rubriqueList" [value]="r">
+                {{r.libelleRubrique}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save</button>
+        <div class="divider"></div>
+        <button  type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer ></app-footer>

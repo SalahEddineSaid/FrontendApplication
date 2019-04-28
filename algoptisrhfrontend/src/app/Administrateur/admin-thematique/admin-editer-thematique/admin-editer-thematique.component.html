@@ -1,0 +1,28 @@
+<app-nav (sidenavToggle)="sidenav.toggle()"></app-nav>
+
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Editer une Thématique</h3></div>
+    <br>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="updateThematique(f.value)">
+
+        <div class="form-group">
+          <label class="control-label">Code Thématique :</label>
+          <input class="form-control" type="text" name="codeThematique" required [(ngModel)]="thematique.codeThematique"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Libellé Thématique :</label>
+          <input class="form-control" type="text" name="libelleThematique" required [(ngModel)]="thematique.libelleThematique"/>
+        </div>
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save</button>
+        <div class="divider"></div>
+        <button  type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer ></app-footer>

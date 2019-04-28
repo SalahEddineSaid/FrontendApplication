@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-3">
+    <div class="container-fluid login">
+      <mat-card class="example-card" style="background:none;box-shadow: none;
+      border: none !important;">
+        <mat-card-header>
+          <div style="display: block; margin-left:auto; margin-right: auto; ">
+            <img src="/src/img/logocol.png" alt="ALGOPTIS.fr">
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="example-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username" type="text" name="username" [(ngModel)]="form.username" #username="ngModel" required>
+                    <div *ngIf="f.submitted && username.invalid">
+                      <div *ngIf="username.errors.required">Username is required</div>
+                    </div>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="form.password" #password="ngModel" required
+                      minlength="6">
+                    <div *ngIf="f.submitted && password.invalid">
+                      <div *ngIf="password.errors.required">Password is required</div>
+                      <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+            </table>
+            <mat-card-actions>
+              <button mat-raised-button>Connexion</button>
+              <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+                Login failed: {{errorMessage}}
+              </div>
+
+
+            </mat-card-actions>
+          </form>
+          <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+  <div class="col-9">
+
+  </div>
+</div>

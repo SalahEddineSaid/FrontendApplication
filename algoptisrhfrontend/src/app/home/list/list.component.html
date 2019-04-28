@@ -1,0 +1,36 @@
+
+
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-3">
+      <div class="container">
+        <!--Recheche salariés-->
+       
+     
+
+        <mat-list class="make-scrollable" style=" height: 400px !important;    
+        overflow-y: scroll!important; ">
+            <h3 matSubheader>List Consultants</h3>
+            <mat-list-item *ngFor="let employee of employeesname" (click)="onselect(employee)">
+                <h6> {{employee.username}} </h6>
+                   
+              
+               
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          
+         </mat-list>
+
+
+
+       
+        
+      </div>
+    </div>
+    <div class="col-9"  >
+      <app-timeline [selectedEmployee]="selectedEmployee"   ></app-timeline>
+    </div>
+  </div>
+</div>
+
